@@ -1,3 +1,6 @@
+
+# 22/10/2015 A page object example for handling 
+# a dynamic page through explicit waits 
 class DynamicLoading
   
   START_BUTTON = {id:  'start'}
