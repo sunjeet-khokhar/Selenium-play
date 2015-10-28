@@ -7,7 +7,7 @@ require_relative 'dynamic_page'
 describe 'Dynamic Loading' do
   
   before(:each) do
-    @driver = Selenium:Webdriver.for :firefox
+    @driver = Selenium::WebDriver.for :firefox
     @dynamic_loading = DynamicLoading.new(@driver)
   end
   
@@ -17,6 +17,6 @@ describe 'Dynamic Loading' do
   
   it 'Waited for Hidden Element' do
     @dynamic_loading.start
-    @dynamic_loading.finish_text_present?.should_be_true
+    @dynamic_loading.finish_text_present?.should be true
   end
 end

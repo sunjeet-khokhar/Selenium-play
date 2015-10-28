@@ -3,7 +3,10 @@
 # a dynamic page through explicit waits 
 class DynamicLoading
   
-  START_BUTTON = {id:  'start'}
+  START_BUTTON = {id: 'start'}
+  #START_BUTTON  = { css: '#start button' }
+  #START_BUTTON = {tag_name: 'button'}
+    
   FINISH_TEXT = {id: 'finish'}
   
   def initialize(driver)
