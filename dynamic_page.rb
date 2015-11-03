@@ -11,7 +11,11 @@ class DynamicLoading
   
   def initialize(driver)
     @driver = driver
-    @driver.get "http://the-internet.herokuapp.com/dynamic_loading/1"
+    #@driver.get "http://the-internet.herokuapp.com/dynamic_loading/1"
+  end
+  
+  def visit_example(example_number)
+    @driver.get "http://the-internet.herokuapp.com/dynamic_loading/#{example_number}"
   end
   
   def start

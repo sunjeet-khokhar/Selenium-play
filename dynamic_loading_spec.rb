@@ -16,7 +16,15 @@ describe 'Dynamic Loading' do
   end
   
   it 'Waited for Hidden Element' do
+    @dynamic_loading.visit_example 1
     @dynamic_loading.start
     @dynamic_loading.finish_text_present?.should be true
   end
+  
+  it 'Waited for Element To Render' do
+      @dynamic_loading.visit_example 2
+      @dynamic_loading.start
+      @dynamic_loading.finish_text_present?.should be true
+    end
+  
 end
