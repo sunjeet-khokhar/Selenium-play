@@ -2,20 +2,23 @@
 
 # filename: login_spec.rb
 
-require 'selenium-webdriver'
-require_relative 'Login'
+# -- dont require this , as it is included in the helper file 
+#require 'selenium-webdriver'  ---
+
+require_relative 'spec_helper'
+require_relative '../pages/Login'
 
 
 describe 'Login_spec' do
 
   before(:each) do
-    @driver = Selenium::WebDriver.for :firefox
+    # -- dont need this as the initilzation is included in the spec_helper file now -- @driver = Selenium::WebDriver.for :firefox
     @login = Login.new(@driver)
   end
 
-  after(:each) do
-    @driver.quit
-  end
+  #after(:each) do  --- dont need this as the initilzation is included in the spec_helper file now --
+   # @driver.quit
+  # end
 
   it 'succeeded' do
     

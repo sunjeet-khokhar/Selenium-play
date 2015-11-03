@@ -1,19 +1,19 @@
 #this test used the dynamic_page.rb page object
 # objective of the is to detect whether a dynamic element got loaded or not ?
 
-require 'selenium-webdriver'
-require_relative 'dynamic_page'
+require_relative 'spec_helper'
+require_relative '../pages/dynamic_page'
 
 describe 'Dynamic Loading' do
   
   before(:each) do
-    @driver = Selenium::WebDriver.for :firefox
+    # -- dont need this as the initilzation is included in the spec_helper file now -- @driver = Selenium::WebDriver.for :firefox
     @dynamic_loading = DynamicLoading.new(@driver)
   end
   
-  after(:each) do
-    @driver.quit
-  end
+  #after(:each) do  --- dont need this as the initilzation is included in the spec_helper file now --
+   # @driver.quit
+  # end
   
   it 'Waited for Hidden Element' do
     @dynamic_loading.visit_example 1
