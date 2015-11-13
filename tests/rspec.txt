@@ -7,6 +7,6 @@ Dynamic Loading
   Waited for Hidden Element
   Waited for Element To Render
 
-Finished in 42.77 seconds (files took 0.26076 seconds to load)
+Finished in 58.75 seconds (files took 2.11 seconds to load)
 4 examples, 0 failures
 
