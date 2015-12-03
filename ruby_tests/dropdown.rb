@@ -18,9 +18,12 @@ include RSpec::Matchers
   #what is the selected text ?
   selected_option = select_list.selected_options[0].text
   #some RSPEC crap i dont understand !
-  expect(selected_option).to eql 'Option 1gvgvvg'
+  expect(selected_option).to eql 'Option 1'
   #prints what was selected ?
   puts selected_option
+  multi_sel = select_list.multiple?
+  #print whether the drop down list supports multiple select options ?
+  puts multi_sel
   #remeber to kill the browser ! 
   @driver.quit
   
