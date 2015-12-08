@@ -282,23 +282,69 @@ a {
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
   <dt id="example_group_1" class="passed">Login_spec</dt>
-    <script type="text/javascript">moveProgressBar('25.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">succeeded</span><span class='duration'>24.69544s</span></dd>
-    <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">failed</span><span class='duration'>11.36155s</span></dd>
+    <script type="text/javascript">moveProgressBar('16.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">succeeded</span><span class='duration'>17.61584s</span></dd>
+    <script type="text/javascript">moveProgressBar('33.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">failed</span><span class='duration'>8.22399s</span></dd>
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 0px;">
   <dt id="example_group_2" class="passed">Dynamic Loading</dt>
-    <script type="text/javascript">moveProgressBar('75.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">Waited for Hidden Element</span><span class='duration'>14.43485s</span></dd>
-    <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">Waited for Element To Render</span><span class='duration'>14.61928s</span></dd>
+    <script type="text/javascript">moveProgressBar('50.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">Waited for Hidden Element</span><span class='duration'>12.13282s</span></dd>
+    <script type="text/javascript">moveProgressBar('66.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">Waited for Element To Render</span><span class='duration'>11.69466s</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>65.11423 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "4 examples, 0 failures";</script>
+<div id="div_group_3" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_3" class="passed">multi_windows</dt>
+    <script type="text/javascript">makeRed('rspec-header');</script>
+    <script type="text/javascript">makeRed('div_group_3');</script>
+    <script type="text/javascript">makeRed('example_group_3');</script>
+    <script type="text/javascript">moveProgressBar('83.3');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">succeeded</span>
+      <span class="duration">10.47307s</span>
+      <div class="failure" id="failure_1">
+        <div class="message"><pre>file not added for reaping: &quot;/var/folders/y_/bzptlqq13qncqs58y704361w0000gn/T/webdriver-profile20151208-28365-ui4396&quot;</pre></div>
+        <div class="backtrace"><pre>/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/common/file_reaper.rb:52:in `reap&#39;
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/firefox/launcher.rb:63:in `quit&#39;
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/firefox/bridge.rb:75:in `ensure in quit&#39;
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/firefox/bridge.rb:75:in `quit&#39;
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/common/driver.rb:167:in `quit&#39;
+./spec/spec_helper.rb:10:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">50</span>
+<span class="linenum">51</span>          unless tmp_files.include?(file)
+<span class="offending"><span class="linenum">52</span>            raise Error::WebDriverError, "file not added for reaping: #{file.inspect}"</span>
+<span class="linenum">53</span>          end
+<span class="linenum">54</span>
+<span class="linenum">55</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">failed</span>
+      <span class="duration">11.89616s</span>
+      <div class="failure" id="failure_2">
+        <div class="message"><pre>
+expected: &quot;New Windoweeee&quot;
+     got: &quot;New Window&quot;
+
+(compared using eql?)
+
+
+file not added for reaping: &quot;/var/folders/y_/bzptlqq13qncqs58y704361w0000gn/T/webdriver-profile20151208-28365-1cc6z37&quot;</pre></div>
+        <div class="backtrace"><pre></pre></div>
+    <pre class="ruby"><code><span class="linenum">-1</span># Couldn't get snippet for 
+<span class="linenum">0</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
+      </div>
+    </dd>
+  </dl>
+</div>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>72.07330 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "6 examples, 2 failures";</script>
 </div>
 </div>
 </body>
