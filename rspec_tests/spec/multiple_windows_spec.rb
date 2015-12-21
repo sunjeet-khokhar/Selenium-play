@@ -2,6 +2,7 @@ require 'selenium-webdriver'
 require 'rspec/expectations'
 extend RSpec::Matchers
 # if you use include Rspec::Matchers it wont work , will result in an exception
+# under succeeded definition I have also included various ways to perform matching in RSpec
 
 describe 'multi_windows' do
 
@@ -23,9 +24,14 @@ it 'succeeded' do
   #expect(@driver.title).not_to eql 'New Window'
   @driver.title.should_not == 'New Window'
   @driver.switch_to.window(new_window)
+  #you can use except.to eql
   #expect(@driver.title).to eql 'New Window'
-  @driver.title.should == 'New Window' 
-  
+  #or you can use the should matcher
+  #@driver.title.should == 'New Window' 
+  #or another way 
+  @driver.title.should eql('New Window')
+  #or another way
+  #@driver.title.should_not eql('ffffvfv')
 end
 
 it 'failed' do
@@ -38,7 +44,9 @@ it 'failed' do
   #expect(@driver.title).not_to eql 'New Window'
   @driver.title.should_not == 'New Window'
   @driver.switch_to.window(new_window)
+  #you can use except.to eql
   #expect(@driver.title).to eql 'New Window'
+  
   @driver.title.should == 'New Windowdcddss' 
   
 end
