@@ -6,7 +6,7 @@ describe 'Ghostdriver_basic_test' do
 
 #def setup
 before(:each) do
-  @driver = Selenium::WebDriver.for :remote, url:'http://localhost:3555'
+  @driver = Selenium::WebDriver.for :remote, url:'http://localhost:3666'
 end
 
 #def teardown
