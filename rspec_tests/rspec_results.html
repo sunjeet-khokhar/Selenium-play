@@ -283,18 +283,18 @@ a {
   <dl style="margin-left: 0px;">
   <dt id="example_group_1" class="passed">Login_spec</dt>
     <script type="text/javascript">moveProgressBar('16.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">succeeded</span><span class='duration'>39.65615s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">succeeded</span><span class='duration'>21.54149s</span></dd>
     <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">failed</span><span class='duration'>16.67694s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">failed</span><span class='duration'>18.41224s</span></dd>
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 0px;">
   <dt id="example_group_2" class="passed">Dynamic Loading</dt>
     <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">Waited for Hidden Element</span><span class='duration'>16.38226s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">Waited for Hidden Element</span><span class='duration'>23.29442s</span></dd>
     <script type="text/javascript">moveProgressBar('66.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">Waited for Element To Render</span><span class='duration'>14.51302s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">Waited for Element To Render</span><span class='duration'>21.42191s</span></dd>
   </dl>
 </div>
 <div id="div_group_3" class="example_group passed">
@@ -306,40 +306,62 @@ a {
     <script type="text/javascript">moveProgressBar('83.3');</script>
     <dd class="example failed">
       <span class="failed_spec_name">succeeded</span>
-      <span class="duration">13.93055s</span>
+      <span class="duration">21.06328s</span>
       <div class="failure" id="failure_1">
-        <div class="message"><pre>file not added for reaping: &quot;/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/webdriver-profile20151222-4689-swnrjd&quot;</pre></div>
-        <div class="backtrace"><pre>/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/common/file_reaper.rb:52:in `reap&#39;
-/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/firefox/launcher.rb:63:in `quit&#39;
-/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/firefox/bridge.rb:75:in `ensure in quit&#39;
-/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/firefox/bridge.rb:75:in `quit&#39;
-/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/common/driver.rb:167:in `quit&#39;
-./spec/spec_helper.rb:10:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">50</span>
-<span class="linenum">51</span>          unless tmp_files.include?(file)
-<span class="offending"><span class="linenum">52</span>            raise Error::WebDriverError, "file not added for reaping: #{file.inspect}"</span>
-<span class="linenum">53</span>          end
-<span class="linenum">54</span>
-<span class="linenum">55</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
+        <div class="message"><pre>file not added for reaping: &quot;C:/Users/SUNJE_~1/AppData/Local/Temp/webdriver-profile20160108-900-126kb4h&quot;</pre></div>
+        <div class="backtrace"><pre>C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/common/file_reaper.rb:52:in `reap&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/firefox/launcher.rb:63:in `quit&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/firefox/bridge.rb:75:in `ensure in quit&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/firefox/bridge.rb:75:in `quit&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/selenium-webdriver-2.47.1/lib/selenium/webdriver/common/driver.rb:167:in `quit&#39;
+D:/Code/Selenium-play/rspec_tests/spec/spec_helper.rb:10:in `block (2 levels) in &lt;top (required)&gt;&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/example_group.rb:471:in `instance_eval&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/example_group.rb:471:in `instance_eval_with_rescue&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/example.rb:242:in `instance_eval_with_rescue&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/hooks.rb:31:in `run&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/hooks.rb:85:in `block in run&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/hooks.rb:85:in `each&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/hooks.rb:85:in `run&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/hooks.rb:446:in `run_hook&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/example_group.rb:350:in `run_after_each_hooks&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/example.rb:298:in `run_after_each&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/example.rb:120:in `block in run&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/example.rb:254:in `with_around_each_hooks&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/example.rb:111:in `run&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/example_group.rb:390:in `block in run_examples&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/example_group.rb:386:in `map&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/example_group.rb:386:in `run_examples&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/example_group.rb:371:in `run&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/command_line.rb:28:in `block (2 levels) in run&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/command_line.rb:28:in `map&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/command_line.rb:28:in `block in run&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/reporter.rb:58:in `report&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/command_line.rb:25:in `run&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/runner.rb:80:in `run&#39;
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/rspec-core-2.14.8/lib/rspec/core/runner.rb:17:in `block in autorun&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">-1</span># Couldn't get snippet for 
+<span class="linenum">0</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
       </div>
     </dd>
     <script type="text/javascript">moveProgressBar('100.0');</script>
     <dd class="example failed">
       <span class="failed_spec_name">failed</span>
-      <span class="duration">14.88888s</span>
+      <span class="duration">22.62150s</span>
       <div class="failure" id="failure_2">
         <div class="message"><pre>expected: &quot;New Windowdcddss&quot;
-     got: &quot;New Window&quot; (using ==)
-
-file not added for reaping: &quot;/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/webdriver-profile20151222-4689-12vv9ns&quot;</pre></div>
-        <div class="backtrace"><pre></pre></div>
-    <pre class="ruby"><code><span class="linenum">-1</span># Couldn't get snippet for 
-<span class="linenum">0</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
+     got: &quot;New Window&quot; (using ==)</pre></div>
+        <div class="backtrace"><pre>./spec/multiple_windows_spec.rb:50:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">48</span>  #expect(@driver.title).to eql 'New Window'
+<span class="linenum">49</span>  
+<span class="offending"><span class="linenum">50</span>  @driver.title.should == 'New Windowdcddss' </span>
+<span class="linenum">51</span>  
+<span class="linenum">52</span>end
+<span class="linenum">53</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
       </div>
     </dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>117.43922 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>128.39076 seconds</strong>";</script>
 <script type="text/javascript">document.getElementById('totals').innerHTML = "6 examples, 2 failures";</script>
 </div>
 </div>
