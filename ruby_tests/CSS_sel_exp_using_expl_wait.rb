@@ -1,24 +1,26 @@
 =begin
 An experimental ruby script where in I am learning how to use CSS selectors 
 with Selenium
+This script also shows use of an explicit wait  
 =end
 
-require 'selenium-webdriver'
-require 'rspec/expectations'
-include RSpec::Matchers
+
+require_relative 'CSS_sel_exp_class'
+ 
 
 def setup
   @driver = Selenium::WebDriver.for :firefox
+  @sel = CSS_sel_exp_class.new(@driver)
 end
 
 def teardown
-  @driver.quit
+  @sel.destroy
 end
 
 def run
   setup
   yield
-  #teardown
+  teardown
 end
 
 run do
@@ -30,13 +32,14 @@ run do
   #click the antiques link
   #@driver.find_element(css: 'a.ata').click
 
-  @driver.get 'http://www.apple.com/itunes/?cid=OAS-US-DOMAINS-itunes.com'
-  wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-  #Use an explcit wait here to wait for the element to load
-  load = wait.until {@driver.find_element(css: 'a.more').displayed?}
+  # The get is in the class file now
+  #@driver.get 'http://www.apple.com/itunes/?cid=OAS-US-DOMAINS-itunes.com'
+  
+  
+ load = @sel.wait_for_element
   if load == true
-    # a.more is the "learn more"hyper link on itunes home page
-    @driver.find_element(css: 'a.more').click
+    @sel.click_element
+    puts 'element found'
   else
    puts 'element not found'
   end
