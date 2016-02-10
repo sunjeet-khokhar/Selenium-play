@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rspec" tests="2" failures="0" errors="0" time="22.793169" timestamp="2016-02-06T14:39:00+13:00">
+  <!-- Randomized with seed 41144 -->
+  <properties/>
+  <testcase classname="Login_spec" name="Login_spec succeeded" file="./Login_spec.rb" time="11.657248"/>
+  <testcase classname="Login_spec" name="Login_spec failed" file="./Login_spec.rb" time="11.134923"/>
+</testsuite>

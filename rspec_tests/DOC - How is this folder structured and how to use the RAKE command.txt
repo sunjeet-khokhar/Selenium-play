@@ -1,0 +1,19 @@
+How to run tests using the RAKE command 
+
+
+1.. All the test specifications are in the "spec" folder and all the page objects are in the "pages"folder
+2..  Also in the "spec"you have the spec_helper.rb file that has all the common actions across the test scripts e.g. firing up and quitting a browser at the end of each test
+
+How to run ...
+Simple ...
+
+1.Enter this directory 
+2. TYpe RAKE on the command line 
+3. The framework will look for the "rakefile" , which is present in this case and is programmed to output the test results 
+to an html file "rspec_results"
+4. The fraemwork will also look for the spec folder and any *_spec.rb files in it and run those tests
+
+another way of running the tests is , goto spec folder 
+then type the below in CLI 
+rspec --pattern *_spec.rb
+
