@@ -11,6 +11,7 @@ include RSpec::Matchers
 require 'csv'
 require 'smarter_csv'
 
+
 def setup
   @driver = Selenium::WebDriver.for :firefox
 end
