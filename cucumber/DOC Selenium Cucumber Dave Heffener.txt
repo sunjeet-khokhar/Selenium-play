@@ -1,0 +1,223 @@
+
+
+For this example, let's use Cucumber to step through automating the login of a website. Scenarios for valid and invalid users would look something like this:
+
+# filename: features/login.feature
+
+Feature: Login
+
+Scenario: Valid User
+  Given a user with valid credentials
+  When they log in
+  Then they will have access to secure portions of the site
+
+Scenario: Invalid User
+  Given a user with invalid credentials
+  When they log in
+  Then they will not gain access to secure portions of the site
+Gherkin scenarios are plain text files that end in .feature. And they live in a directory called features.
+
+Inside of the features directory, there are some additional folders we'll want to use (e.g., step_definitions and support).
+
++-- features
+¦   +-- login.feature
+¦   +-- step_definitions
+¦   +-- support
+
+When we save the feature file and run it (e.g., cucumber from the command-line), Cucumber will see if there are any step definitions that match. If there aren't, it will provide us with some code to get us started.
+
+You can implement step definitions for undefined steps with these snippets:
+
+Given(/^a user with valid credentials$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^they log in$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^they will have access to secure portions of the site$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^a user with invalid credentials$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^they will not gain access to secure portions of the site$/) do
+  pending # express the regexp above with the code you wish you had
+end
+We can copy this outputted code and paste it into a new file -- login.rb in the step_definitions directory.
+
+This is where we'll place our test actions (e.g., Selenium commands, assertions, etc.). But before we do that, we'll need to take care of setting up and tearing down our Selenium session.
+
+That gets handled in the support directory. All files in this directory get executed before the tests. But there's one file in particular that will get executed before anything else -- and that's env.rb. Let's create this file and add in our Selenium configuration with access to Applitools and Sauce Labs.
+
+# filename: support/env.rb
+
+require 'selenium-webdriver'
+require 'rspec/expectations'
+include RSpec::Matchers
+require 'eyes_selenium'
+
+Before do |scenario|
+  @eyes = Applitools::Eyes.new
+  @eyes.api_key = 'your Applitools API key'
+  caps = Selenium::WebDriver::Remote::Capabilities.internet_explorer
+  caps.version  = '8'
+  caps.platform = 'Windows XP'
+  caps['name'] = scenario.title
+  browser = Selenium::WebDriver.for(
+    :remote,
+    url: "http://your-sauce-username:your-sauce-access-key@ondemand.saucelabs.com:80/wd/hub",
+    desired_capabilities: caps)
+  @driver = @eyes.open(app_name: 'the-internet', test_name: scenario.title, driver: browser)
+end
+
+After do
+  @eyes.abort_if_not_closed
+  @driver.quit
+end
+At the top of the file we pull in our requisite libraries (e.g., selenium-webdriver to load and drive the browser, rspec/expecations and RSpec::Matchers to perform an assertion, and eyes_selenium for visual testing with Applitools Eyes).
+
+Next we specify our setup and teardown in Before and After blocks. Things specified here will occur before and after each scenario specified in our feature files.
+
+In Before we create an instance of Applitools Eyes, configure the browser/operating system we want on Sauce Labs, and join the two together -- storing the final outcome (which is a Selenium WebDriver instance that is now connected to both Applitools and Sauce Labs) in a @driver variable. This variable will automatically be made available for use in the step definitions.
+
+In After we ensure that our Applitools connection closes (in addition to quitting the instance of Selenium).
+
+Now let's wire everything up in our step definition.
+
+# filename: step_definitions/login.rb
+
+Given(/^a user with valid credentials$/) do
+  @user = {
+    username: 'tomsmith',
+    password: 'SuperSecretPassword!'
+  }
+end
+
+Given(/^a user with invalid credentials$/) do
+  @user = {
+    username: 'tomsmith',
+    password: 'badpassword'
+  }
+end
+
+When(/^they log in$/) do
+  @driver.get 'http://the-internet.herokuapp.com/login'
+  @driver.find_element(id: 'username').send_keys(@user[:username])
+  @driver.find_element(id: 'password').send_keys(@user[:password])
+  @driver.find_element(id: 'login').submit
+end
+
+Then(/^they will have access to secure portions of the site$/) do
+  @eyes.check_window('Logged In')
+  expect(@driver.find_element(css: '.flash.success').displayed?).to eql true
+  @eyes.close
+end
+
+Then(/^they will not gain access to secure portions of the site$/) do
+  @eyes.check_window('Not Logged In')
+  expect(@driver.find_element(id: 'login').displayed?).to eql true
+  expect(@driver.find_element(css: '.flash.error').displayed?).to eql true
+  @eyes.close
+end
+Our Selenium actions are simple -- we're finding the form elements and inputting text (e.g., username and password), submitting the form, and checking to make sure the correct notification message appeared in an assertion.
+
+With our Applitools commands (e.g., @eyes.check_window() and @eyes.close) we are capturing snapshots of the page and comparing them against the baseline image.
+
+Expected Outcome
+
+If we save this file and then run cucumber again (e.g., cucumber from the command-line), here is what will happen:
+
+Create an instance of Selenium on Sauce Labs
+Connect the Selenium instance to Applitools Eyes
+Test actions run
+Assertions (e.g., expect()) and image checks (e.g., @eyes.check_window()) occur
+Applitools and Sauce Labs sessions close
+Test results get outputted
+> cucumber
+Feature: Login
+
+  Scenario: Login Succeeded                                   # features/login.feature:3
+    Given a user with valid credentials                       # features/step_definitions/login.rb:1
+    When they log in                                          # features/step_definitions/login.rb:8
+    Then they will have access to secure portions of the site # features/step_definitions/login.rb:16
+
+  Scenario: Login Failed                                          # features/login.feature:8
+    Given a user with invalid credentials                         # features/step_definitions/login.rb:22
+    When they log in                                              # features/step_definitions/login.rb:8
+    Then they will not gain access to secure portions of the site # features/step_definitions/login.rb:29
+
+2 scenarios (2 passed)
+6 steps (6 passed)
+1m39.410s
+If Applitools found a visual bug, it would fail the test by raising an exception and output the URL to the job -- which would look like this:
+
+> cucumber
+Feature: Login
+
+  Scenario: Login Succeeded                                   # features/login.feature:3
+    Given a user with valid credentials                       # features/step_definitions/login.rb:1
+    When they log in                                          # features/step_definitions/login.rb:8
+    Then they will have access to secure portions of the site # features/step_definitions/login.rb:16
+      'Login Succeeded' of 'the-internet'. see details at https://eyes.applitools.com/app/sessions/251976656790606 (Applitools::TestFailedError)
+      ./features/step_definitions/login.rb:19:in `/^they will have access to secure portions of the site$/'
+      features/login.feature:6:in `Then they will have access to secure portions of the site'
+
+  Scenario: Login Failed                                          # features/login.feature:8
+    Given a user with invalid credentials                         # features/step_definitions/login.rb:22
+    When they log in                                              # features/step_definitions/login.rb:8
+    Then they will not gain access to secure portions of the site # features/step_definitions/login.rb:29
+      'Login Failed' of 'the-internet'. see details at https://eyes.applitools.com/app/sessions/251976656732861 (Applitools::TestFailedError)
+      ./features/step_definitions/login.rb:33:in `/^they will not gain access to secure portions of the site$/'
+      features/login.feature:11:in `Then they will not gain access to secure portions of the site'
+
+Failing Scenarios:
+cucumber features/login.feature:3 # Scenario: Login Succeeded
+cucumber features/login.feature:8 # Scenario: Login Failed
+
+2 scenarios (2 failed)
+6 steps (2 failed, 4 passed)
+2m9.743s
+ 
+A Small Bit of Cleanup
+
+Right now we're explicitly calling eyes.close() to perform a comparison of our tests against their baseline images, but we don't have to. We can easily make it so this automatically gets called at the end of every test run.
+
+To do that, we'll need to eyes.close() to our After block in support/env.rb.
+
+# filename: support/env.rb
+...
+After do
+  @driver.quit
+  @eyes.close
+end
+By placing @eyes.close here we can remove @eyes.abort_if_not_closed since it's no longer necessary.
+
+We can also remove @eyes.close from our Then step definitions. Additionally, we can remove our RSpec assertions since they are redundant -- and our visual validation is effectively performing hundreds of validations.
+
+Then(/^they will have access to secure portions of the site$/) do
+  @eyes.check_window('Logged In')
+end
+
+Then(/^they will not gain access to secure portions of the site$/) do
+  @eyes.check_window('Not Logged In')
+end
+If we save these changes and run the tests one more time (e.g., cucumber from the command-line) they will execute just like before. And when there's a failure, the test output will be correctly attributed to the failing scenario.
+
+Outro
+
+Hopefully this tip has helped save you some time when it comes to automating your BDD scripts and connecting them to services like Sauce Labs and Applitools.
+
+Happy Testing!
+ 
+
+Cheers,
+Dave H
+@TourDeDave
+
+P.S. Tomorrow I'll be doing a Telerik webinar with Jim Holmes where we discuss UI Automation Essentials. You can find out more info here. I'm also going to be doing a webinar with Sauce Labs and Applitools on April 8th. I'll have more details on that next week.
+
+P.P.S. I'm speaking at the Tel Aviv Selenium Meetup this Thursday, STP Con at the end of this month, and STAR East in early May. If you're going to be at any of these events, please feel free to find me and say hello. I'd love to meet you and chat.

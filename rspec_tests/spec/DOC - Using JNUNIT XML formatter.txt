@@ -1,0 +1,17 @@
+Use RSpec JUnit formatter 
+
+http://www.rubydoc.info/gems/rspec_junit_formatter/0.2.3
+
+1. Install the GEM 
+gem install rspec_junit_formatter
+
+2. RUn the Rspec command
+rspec Login_spec.rb --format RspecJUnitFormatter --out rspec.xml
+
+3.If we didn't want to type these parameters out every time we could place them into an RSpec command helper file (e.g., .rspec).
+
+# filename: .rspec
+
+--format RspecJunitFormatter
+--out result.xml
+NOw , you only need to run the command - "rspec Login_spec.rb"

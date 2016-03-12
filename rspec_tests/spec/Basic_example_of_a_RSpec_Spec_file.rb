@@ -44,8 +44,8 @@ describe 'Login_spec' do
     
     @login.login_with('tomsmith','SuperSecretPassword!')
     @login.success_message_present?.should be true
-   
-     
+    
+    
 
     end
     
