@@ -8,8 +8,8 @@ require 'rspec/expectations'
 include RSpec::Matchers
 
 def setup
-  #@driver = Selenium::WebDriver.for :firefox
-  @driver = Selenium::WebDriver.for :remote, url: 'http://localhost:9515', desired_capabilities: :chrome
+  @driver = Selenium::WebDriver.for :firefox
+  #@driver = Selenium::WebDriver.for :remote, url: 'http://localhost:9515', desired_capabilities: :chrome
 end
 
 def teardown
